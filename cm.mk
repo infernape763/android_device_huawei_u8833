@@ -1,5 +1,5 @@
 #
-# Copyright 2013 The Android Open-Source Project
+# Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
+# Inherit some common CM stuff
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Inherit device configuration
 $(call inherit-product, device/huawei/u8833/full_u8833.mk)
 
-PRODUCT_NAME := aosp_u8833
+# Correct boot animation size for the screen
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
+
+# Device name
+PRODUCT_NAME := cm_u8833
+PRODUCT_DEVICE := u8833
+
+# CM packages
+PRODUCT_PACKAGES += \
+    Torch
